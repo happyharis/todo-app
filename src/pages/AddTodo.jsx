@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
+import { Button, Container, Form } from "react-bootstrap";
 
 export default function AddTodo() {
   const [title, setTitle] = useState("");
