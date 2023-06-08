@@ -9,7 +9,11 @@ export default function AddTodo() {
   return (
     <Container>
       <h1 className="my-3">Add Todo</h1>
-      <Form>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <Form.Group className="mb-3" controlId="title">
           <Form.Label>Title</Form.Label>
           <Form.Control
