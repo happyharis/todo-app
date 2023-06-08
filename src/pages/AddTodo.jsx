@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { TodoContext } from "../contexts/TodoContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AddTodo() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [completed, setCompleted] = useState(false);
-
+  const setTodos = useContext(TodoContext).setTodos;
+  const todos = useContext(TodoContext).todos;
+  const navigate = useNavigate();
   return (
     <Container>
       <h1 className="my-3">Add Todo</h1>
       <Form
         onSubmit={(event) => {
           event.preventDefault();
+          // todos = []
+          setTodos([
+            ...todos,
+            // title = 'Get dev job'
+            // description = '1. Listen to Haris not-boring lecture'
+            // completed = false
+            { id: Date.now(), title, description, completed },
+            // essentially it would look like this:
+            // {
+            //   id: 123456,
+            //   title: 'Get dev job',
+            //   description: '1. Listen to Haris not-boring lecture',
+            //   completed: false
+            // }
+          ]);
+
+          navigate("/");
         }}
       >
         <Form.Group className="mb-3" controlId="title">
